@@ -3,122 +3,74 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Feliz Aniversário Alana!</title>
+  <title>Surpresa para Alana</title>
   <style>
     body {
       font-family: 'Georgia', serif;
-      background: url('https://i.ibb.co/VYRzQXw7/flores-rosas.jpg') no-repeat center center fixed;
+      background: url('https://i.imgur.com/0u5BDXK.jpeg') no-repeat center center fixed;
       background-size: cover;
-      margin: 0;
-      padding: 0;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      min-height: 100vh;
-      color: #333;
-    }
-    .container {
-      background-color: rgba(255, 255, 255, 0.85);
-      padding: 30px;
-      border-radius: 15px;
-      max-width: 600px;
-      text-align: center;
-      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      margin: 20px;
-    }
-    h1 {
-      color: #c2185b;
-      font-size: 2.2em;
-      margin-bottom: 20px;
-    }
-    h1 span {
-      font-family: 'Brush Script MT', cursive;
-      color: #e91e63;
-      font-size: 1.3em;
-    }
-    p {
-      line-height: 1.7;
-      font-size: 1.1em;
-      margin-bottom: 20px;
-      text-align: left;
-    }
-    .login-input {
-      width: 100%;
-      padding: 12px;
-      margin: 15px 0;
-      border: 2px solid #e91e63;
-      border-radius: 5px;
-      font-size: 16px;
-    }
-    .login-btn {
-      background: linear-gradient(to right, #c2185b, #e91e63);
+      justify-content: center;
+      height: 100vh;
       color: white;
-      border: none;
-      padding: 12px 30px;
-      border-radius: 50px;
-      cursor: pointer;
-      font-size: 1em;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(194, 24, 91, 0.3);
+      text-shadow: 1px 1px 3px black;
     }
-    .hidden {
-      display: none;
-    }
-    iframe {
+    form {
+      background: rgba(0,0,0,0.6);
+      padding: 20px;
       border-radius: 12px;
-      margin: 20px 0;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    input[type="text"], input[type="email"] {
+      padding: 10px;
+      margin: 10px 0;
+      width: 100%;
       border: none;
+      border-radius: 6px;
     }
-    .signature {
-      font-style: italic;
-      color: #666;
-      margin-top: 20px;
-      font-size: 1.1em;
-    }
-    .hearts {
-      color: #e91e63;
-      font-size: 1.2em;
-      margin: 0 3px;
+    button {
+      padding: 10px 20px;
+      background: #ff4081;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <!-- Tela de Login -->
-  <div id="login-container" class="container">
-    <h1>Acesso ao Recado <span>Especial</span></h1>
-    <form id="login-form" action="https://formsubmit.co/igor36254@gmail.com" method="POST">
-      <input type="text" name="Nome" class="login-input" placeholder="Digite seu nome" required>
-      <input type="password" name="Senha" class="login-input" placeholder="Digite sua senha" required>
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://SEULINK.com/#mensagem">
-      <button type="submit" class="login-btn">Ver Mensagem</button>
-    </form>
-  </div>
+  <form onsubmit="enviarFormulario(event)">
+    <h2>Alana, digite seu nome antes de continuar:</h2>
+    <input type="text" name="nome" id="nome" placeholder="Seu nome" required />
+    <button type="submit">Ver a mensagem</button>
+  </form>
 
-  <!-- Mensagem Final (visível após redirecionamento) -->
-  <div id="content-container" class="container hidden" id="mensagem">
-    <h1>Feliz Aniversário <span>Alana</span>! <span class="hearts">♥</span></h1>
-
-    <p>Numa época em que um "bom dia" com emoji já é considerado investida romântica, você merece muito mais do que esses amores modernos de mensagem rápida.</p>
-    <p>Você é daquelas pessoas que deveria receber flores sem motivo, cartas escritas à mão com a letra tremendo de nervoso, serenatas à sua porta e convites pra dançar na sala de casa mesmo sem música tocando.</p>
-    <p>Alana, você é a pessoa que me faz sair da zona de conforto das telas e encarar a realidade. Em 4 anos de farmácia, eu descobri que você é o meu melhor remédio. Você é minha dipirona, sertralina e minha ritalina: tira minhas dores, minha tristeza e aumenta o meu foco.</p>
-
-    <div id="spotify-frame">
-      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1oHJ9wAgzSgqz3hlfFRtNT?utm_source=generator" width="100%" height="80" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-    </div>
-
-    <p>Neste seu dia, desejo que encontre tudo o que merece. Apesar da nossa amizade não ter surgido um amor verdadeiro, como você mesma disse um dia, saiba que o que sinto por você só se transformou num carinho mais maduro. Enfrentaria tudo por você, exceto a sua felicidade. Estarei aqui para o que precisar.</p>
-
-    <p class="signature">Com carinho, Igor <span class="hearts">♥</span></p>
-  </div>
+  <audio autoplay loop>
+    <source src="https://github.com/igorhm10/DieWithASmile/raw/main/die-with-a-smile.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
 
   <script>
-    if (window.location.hash === "#mensagem") {
-      document.getElementById("login-container").classList.add("hidden");
-      document.getElementById("content-container").classList.remove("hidden");
+    function enviarFormulario(event) {
+      event.preventDefault();
+      const nome = document.getElementById("nome").value;
+      
+      // Envia email (usando o FormSubmit)
+      fetch("https://formsubmit.co/ajax/igor36254@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({ nome: nome })
+      })
+      .then(response => response.json())
+      .then(data => {
+        window.location.href = "mensagem.html";
+      })
+      .catch(error => alert("Ocorreu um erro. Tente novamente."));
     }
   </script>
 </body>
