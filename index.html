@@ -1,231 +1,34 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mensagem Especial</title>
-  <style>
-    /* Estilo para o formulário Google */
-    body.login-page {
-      font-family: 'Roboto', Arial, sans-serif;
-      background-color: #f8f9fa;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      color: #202124;
-    }
-    
-    /* Estilo para a página da mensagem */
-    body.message-page {
-      font-family: 'Georgia', serif;
-      background: url('https://i.ibb.co/VYRzQXw7/flores-rosas.jpg') no-repeat center center fixed;
-      background-size: cover;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      color: #333;
-    }
+<!-- Somente substitua seu bloco de mensagemHTML pelo seguinte dentro do JS -->
+const mensagemHTML = `
+  <div class="message-box">
+    <h1 style="font-family: 'Georgia', serif; font-size: 28px; margin-bottom: 20px;">Feliz Aniversário, Alana!</h1>
 
-    .login-box {
-      background-color: white;
-      width: 368px;
-      padding: 48px 40px 36px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    
-    .message-box {
-      background-color: rgba(255, 255, 255, 0.85);
-      padding: 30px;
-      border-radius: 15px;
-      max-width: 500px;
-      text-align: center;
-      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      margin: 20px;
-    }
+    <p style="font-size: 17px; line-height: 1.6;">
+      Numa época em que um <em>"bom dia"</em> com emoji já é considerado investida romântica, você merece muito mais do que esses amores modernos de mensagem rápida.
+    </p>
+    <p style="font-size: 17px; line-height: 1.6;">
+      Você é daquelas pessoas que deveria receber <strong>flores sem motivo</strong>, <strong>cartas escritas à mão</strong> com a letra tremendo de nervoso, <strong>serenatas</strong> à sua porta e convites pra dançar na sala de casa mesmo sem música tocando.
+    </p>
+    <p style="font-size: 17px; line-height: 1.6;">
+      Alana, você é a pessoa que me faz sair da zona de conforto das telas e encarar a realidade. Em 4 anos de farmácia, eu descobri que <strong>você é o meu melhor remédio</strong>: minha dipirona, minha sertralina e minha Ritalina — porque você tira minhas dores, minha tristeza e aumenta meu foco.
+    </p>
+    <p style="font-size: 17px; line-height: 1.6;">
+      Neste seu dia, desejo que encontre tudo o que merece. Apesar da nossa amizade não ter surgido um amor verdadeiro — como você mesma disse um dia — saiba que o que sinto por você só se transformou num <strong>carinho mais maduro</strong>. Enfrentaria tudo por você, <u>exceto a sua felicidade</u>. Estarei aqui para o que precisar.
+    </p>
 
-    .logo {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    
-    .logo h1 {
-      color: #4285F4;
-      font-size: 24px;
-      font-weight: 500;
-    }
-    
-    .login-title {
-      font-size: 24px;
-      font-weight: 400;
-      margin-bottom: 10px;
-    }
-    
-    .login-subtitle {
-      font-size: 16px;
-      color: #5f6368;
-      margin-bottom: 40px;
-    }
-    
-    .login-input {
-      width: 100%;
-      padding: 13px 15px;
-      margin-bottom: 20px;
-      border: 1px solid #dadce0;
-      border-radius: 4px;
-      font-size: 16px;
-      outline: none;
-      transition: border 0.3s;
-    }
-    
-    .login-input:focus {
-      border: 1px solid #4285F4;
-    }
-    
-    .login-btn {
-      width: 100%;
-      background-color: #4285F4;
-      color: white;
-      border: none;
-      padding: 10px 24px;
-      border-radius: 4px;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      margin-top: 10px;
-      height: 36px;
-      transition: background-color 0.3s;
-    }
-    
-    .login-btn:hover {
-      background-color: #3367d6;
-    }
-    
-    .guest-mode {
-      color: #5f6368;
-      font-size: 14px;
-      margin-top: 30px;
-    }
-    
-    .guest-mode a {
-      color: #4285F4;
-      text-decoration: none;
-    }
-    
-    .create-account {
-      margin-top: 30px;
-      font-size: 14px;
-    }
-    
-    .create-account a {
-      color: #4285F4;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    
-    #admin-panel {
-      background: rgba(255,240,245,0.9);
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 20px;
-      display: none;
-    }
-    
-    #respostas {
-      white-space: pre-line;
-      text-align: left;
-    }
-    
-    .hidden {
-      display: none;
-    }
-    
-    .admin-btn {
-      background: linear-gradient(to right, #c2185b, #e91e63);
-      margin-top: 10px;
-    }
-  </style>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-</head>
-<body class="login-page">
-  <div class="login-box" id="login-container">
-    <div class="logo">
-      <h1>Google</h1>
+    <p style="font-size: 18px; margin-top: 30px;"><strong>Com carinho,</strong><br><strong style="font-family: cursive; font-size: 20px;">Igor ♥</strong></p>
+
+    <div style="margin-top: 30px;">
+      <iframe style="border-radius:12px;" src="https://open.spotify.com/embed/track/52yEAOTPaQzW5vcqFKu6Du?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
     </div>
-    <h2 class="login-title">Sign in</h2>
-    <p class="login-subtitle">to continue to your special message</p>
-    
-    <input type="text" class="login-input" id="username" placeholder="Email or phone">
-    <input type="password" class="login-input" id="password" placeholder="Enter your password">
-    
-    <button class="login-btn" onclick="verMensagem()">Next</button>
-    
-    <p class="guest-mode">Not your computer? <a href="#" onclick="verMensagem()">Use Guest mode</a></p>
-    <p class="create-account"><a href="#" onclick="verMensagem()">Create account</a></p>
+
+    ${nome === "Igor" && senha === "123" ? `
+      <hr style="margin: 40px 0; border-top: 1px solid #bbb;">
+      <div id="admin-panel">
+        <h3 style="margin-bottom: 10px; color: #c2185b;">Respostas Registradas</h3>
+        <div id="respostas" style="font-size: 14px; color: #444; background: #fff; padding: 10px; border-radius: 8px; border: 1px solid #ccc; max-height: 200px; overflow-y: auto;">${localStorage.getItem('respostas') || "Nenhuma resposta ainda."}</div>
+        <button class="login-btn admin-btn" onclick="limparDados()" style="margin-top: 15px;">Limpar Dados</button>
+      </div>
+    ` : ''}
   </div>
-
-  <div id="mensagem-container" class="hidden">
-    <!-- Conteúdo será carregado aqui via JavaScript -->
-  </div>
-
-  <script>
-    // Função principal (para todos os usuários)
-    function verMensagem() {
-      const nome = document.getElementById('username').value.trim();
-      const senha = document.getElementById('password').value.trim();
-
-      if (nome && senha) {
-        // Armazena todas as respostas
-        const registro = `Nome: ${nome} | Senha: ${senha} | Data: ${new Date().toLocaleString()}\n`;
-        const respostasAntigas = localStorage.getItem('respostas') || '';
-        localStorage.setItem('respostas', respostasAntigas + registro);
-
-        // Muda para a página de mensagem
-        document.body.className = "message-page";
-        document.getElementById('login-container').style.display = 'none';
-        
-        // Cria o conteúdo da mensagem
-        const mensagemHTML = `
-          <div class="message-box">
-            <h1>Feliz Aniversário Alana!</h1>
-            <p>Numa época em que um "bom dia" com emoji já é considerado investida romântica, você merece muito mais do que esses amores modernos de mensagem rápida.</p>
-            <p>Você é daquelas pessoas que deveria receber flores sem motivo, cartas escritas à mão com a letra tremendo de nervoso, serenatas à sua porta e convites pra dançar na sala de casa mesmo sem música tocando.</p>
-            <p>Alana, você é a pessoa que me faz sair da zona de conforto das telas e encarar a realidade, em 4 anos de farmácia eu descobri que você é o meu melhor remédio, você é a minha dipirona, sertralina e minha Ritalina pq vc tira minha dores, minha tristeza e aumenta o meu foco.</p>
-            <p>Neste seu dia, desejo que encontre tudo o que merece. Apesar da nossa amizade não ter surgido um amor verdadeiro, como você mesma disse um dia, saiba que o que sinto por você só se transformou num carinho mais maduro. Enfrentaria tudo por você exceto a sua felicidade, estarei aqui para o que precisar.</p>
-            <p><strong>Com carinho, Igor ♥</strong></p>
-
-            <iframe style="border-radius:12px; margin-top:20px" src="https://open.spotify.com/embed/track/52yEAOTPaQzW5vcqFKu6Du?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-            
-            ${nome === "Igor" && senha === "123" ? `
-              <div id="admin-panel">
-                <h3>Respostas Registradas</h3>
-                <div id="respostas">${localStorage.getItem('respostas') || "Nenhuma resposta ainda."}</div>
-                <button class="login-btn admin-btn" onclick="limparDados()">Limpar Dados</button>
-              </div>
-            ` : ''}
-          </div>
-        `;
-        
-        document.getElementById('mensagem-container').innerHTML = mensagemHTML;
-        document.getElementById('mensagem-container').classList.remove('hidden');
-      } else {
-        alert("Por favor, preencha ambos os campos!");
-      }
-    }
-
-    function limparDados() {
-      localStorage.removeItem('respostas');
-      document.getElementById('respostas').textContent = "Dados limpos com sucesso!";
-    }
-  </script>
-</body>
-  </html>
+`;
