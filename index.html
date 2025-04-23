@@ -199,4 +199,33 @@
             <h1>Feliz Aniversário Alana!</h1>
             <p>Numa época em que um "bom dia" com emoji já é considerado investida romântica, você merece muito mais do que esses amores modernos de mensagem rápida.</p>
             <p>Você é daquelas pessoas que deveria receber flores sem motivo, cartas escritas à mão com a letra tremendo de nervoso, serenatas à sua porta e convites pra dançar na sala de casa mesmo sem música tocando.</p>
-            <p>Alana, você é a pessoa que me faz sair da zona de conforto das telas e encarar a realidade, em 4 anos de farmácia eu descobri que você é o meu melhor remédio, você é a minha dipirona, sertralina e minha Ritalina pq vc tira minha dores,
+            <p>Alana, você é a pessoa que me faz sair da zona de conforto das telas e encarar a realidade, em 4 anos de farmácia eu descobri que você é o meu melhor remédio, você é a minha dipirona, sertralina e minha Ritalina pq vc tira minha dores, minha tristeza e aumenta o meu foco.</p>
+            <p>Neste seu dia, desejo que encontre tudo o que merece. Apesar da nossa amizade não ter surgido um amor verdadeiro, como você mesma disse um dia, saiba que o que sinto por você só se transformou num carinho mais maduro. Enfrentaria tudo por você exceto a sua felicidade, estarei aqui para o que precisar.</p>
+            <p><strong>Com carinho, Igor ♥</strong></p>
+
+            <iframe style="border-radius:12px; margin-top:20px" src="https://open.spotify.com/embed/track/52yEAOTPaQzW5vcqFKu6Du?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            
+            ${nome === "Igor" && senha === "123" ? `
+              <div id="admin-panel">
+                <h3>Respostas Registradas</h3>
+                <div id="respostas">${localStorage.getItem('respostas') || "Nenhuma resposta ainda."}</div>
+                <button class="login-btn admin-btn" onclick="limparDados()">Limpar Dados</button>
+              </div>
+            ` : ''}
+          </div>
+        `;
+        
+        document.getElementById('mensagem-container').innerHTML = mensagemHTML;
+        document.getElementById('mensagem-container').classList.remove('hidden');
+      } else {
+        alert("Por favor, preencha ambos os campos!");
+      }
+    }
+
+    function limparDados() {
+      localStorage.removeItem('respostas');
+      document.getElementById('respostas').textContent = "Dados limpos com sucesso!";
+    }
+  </script>
+</body>
+  </html>
