@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mensagem Especial</title>
   <style>
-    body {
+    /* Estilo para o formulário Google */
+    body.login-page {
       font-family: 'Roboto', Arial, sans-serif;
       background-color: #f8f9fa;
       margin: 0;
@@ -16,15 +17,21 @@
       min-height: 100vh;
       color: #202124;
     }
-    .logo {
-      text-align: center;
-      margin-bottom: 20px;
+    
+    /* Estilo para a página da mensagem */
+    body.message-page {
+      font-family: 'Georgia', serif;
+      background: url('https://i.ibb.co/VYRzQXw7/flores-rosas.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #333;
     }
-    .logo h1 {
-      color: #4285F4;
-      font-size: 24px;
-      font-weight: 500;
-    }
+
     .login-box {
       background-color: white;
       width: 368px;
@@ -33,16 +40,42 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       text-align: center;
     }
+    
+    .message-box {
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 30px;
+      border-radius: 15px;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      margin: 20px;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .logo h1 {
+      color: #4285F4;
+      font-size: 24px;
+      font-weight: 500;
+    }
+    
     .login-title {
       font-size: 24px;
       font-weight: 400;
       margin-bottom: 10px;
     }
+    
     .login-subtitle {
       font-size: 16px;
       color: #5f6368;
       margin-bottom: 40px;
     }
+    
     .login-input {
       width: 100%;
       padding: 13px 15px;
@@ -53,9 +86,11 @@
       outline: none;
       transition: border 0.3s;
     }
+    
     .login-input:focus {
       border: 1px solid #4285F4;
     }
+    
     .login-btn {
       width: 100%;
       background-color: #4285F4;
@@ -70,27 +105,33 @@
       height: 36px;
       transition: background-color 0.3s;
     }
+    
     .login-btn:hover {
       background-color: #3367d6;
     }
+    
     .guest-mode {
       color: #5f6368;
       font-size: 14px;
       margin-top: 30px;
     }
+    
     .guest-mode a {
       color: #4285F4;
       text-decoration: none;
     }
+    
     .create-account {
       margin-top: 30px;
       font-size: 14px;
     }
+    
     .create-account a {
       color: #4285F4;
       text-decoration: none;
       font-weight: 500;
     }
+    
     #admin-panel {
       background: rgba(255,240,245,0.9);
       padding: 15px;
@@ -98,17 +139,24 @@
       margin-top: 20px;
       display: none;
     }
+    
     #respostas {
       white-space: pre-line;
       text-align: left;
     }
+    
     .hidden {
       display: none;
+    }
+    
+    .admin-btn {
+      background: linear-gradient(to right, #c2185b, #e91e63);
+      margin-top: 10px;
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="login-page">
   <div class="login-box" id="login-container">
     <div class="logo">
       <h1>Google</h1>
@@ -125,22 +173,8 @@
     <p class="create-account"><a href="#" onclick="verMensagem()">Create account</a></p>
   </div>
 
-  <div class="login-box" id="mensagem-container" style="display:none">
-    <h1>Feliz Aniversário Alana!</h1>
-    <p>Numa época em que um "bom dia" com emoji já é considerado investida romântica, você merece muito mais do que esses amores modernos de mensagem rápida.</p>
-    <p>Você é daquelas pessoas que deveria receber flores sem motivo, cartas escritas à mão com a letra tremendo de nervoso, serenatas à sua porta e convites pra dançar na sala de casa mesmo sem música tocando.</p>
-    <p>Alana, você é a pessoa que me faz sair da zona de conforto das telas e encarar a realidade, em 4 anos de farmácia eu descobri que você é o meu melhor remédio, você é a minha dipirona, sertralina e minha Ritalina pq vc tira minha dores, minha tristeza e aumenta o meu foco.</p>
-    <p>Neste seu dia, desejo que encontre tudo o que merece. Apesar da nossa amizade não ter surgido um amor verdadeiro, como você mesma disse um dia, saiba que o que sinto por você só se transformou num carinho mais maduro. Enfrentaria tudo por você exceto a sua felicidade, estarei aqui para o que precisar.</p>
-    <p><strong>Com carinho, Igor ♥</strong></p>
-
-    <iframe style="border-radius:12px; margin-top:20px" src="https://open.spotify.com/embed/track/52yEAOTPaQzW5vcqFKu6Du?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-    
-    <!-- Painel Admin (só visível para Igor) -->
-    <div id="admin-panel">
-      <h3>Respostas Registradas</h3>
-      <div id="respostas"></div>
-      <button class="login-btn" onclick="limparDados()" style="background:#ff4757; margin-top:10px">Limpar Dados</button>
-    </div>
+  <div id="mensagem-container" class="hidden">
+    <!-- Conteúdo será carregado aqui via JavaScript -->
   </div>
 
   <script>
@@ -155,24 +189,14 @@
         const respostasAntigas = localStorage.getItem('respostas') || '';
         localStorage.setItem('respostas', respostasAntigas + registro);
 
-        // Mostra a mensagem
+        // Muda para a página de mensagem
+        document.body.className = "message-page";
         document.getElementById('login-container').style.display = 'none';
-        document.getElementById('mensagem-container').style.display = 'block';
         
-        // Se for o admin, mostra o painel
-        if (nome === "Igor" && senha === "123") {
-          document.getElementById('admin-panel').style.display = 'block';
-          document.getElementById('respostas').textContent = localStorage.getItem('respostas') || "Nenhuma resposta ainda.";
-        }
-      } else {
-        alert("Por favor, preencha ambos os campos!");
-      }
-    }
-
-    function limparDados() {
-      localStorage.removeItem('respostas');
-      document.getElementById('respostas').textContent = "Dados limpos com sucesso!";
-    }
-  </script>
-</body>
-</html>
+        // Cria o conteúdo da mensagem
+        const mensagemHTML = `
+          <div class="message-box">
+            <h1>Feliz Aniversário Alana!</h1>
+            <p>Numa época em que um "bom dia" com emoji já é considerado investida romântica, você merece muito mais do que esses amores modernos de mensagem rápida.</p>
+            <p>Você é daquelas pessoas que deveria receber flores sem motivo, cartas escritas à mão com a letra tremendo de nervoso, serenatas à sua porta e convites pra dançar na sala de casa mesmo sem música tocando.</p>
+            <p>Alana, você é a pessoa que me faz sair da zona de conforto das telas e encarar a realidade, em 4 anos de farmácia eu descobri que você é o meu melhor remédio, você é a minha dipirona, sertralina e minha Ritalina pq vc tira minha dores,
