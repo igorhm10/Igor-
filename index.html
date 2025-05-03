@@ -1,157 +1,114 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mensagem Especial</title>
+  <meta charset="UTF-8">
+  <title>Feliz Aniversário!</title>
   <style>
-    body.login-page {
-      font-family: 'Roboto', Arial, sans-serif;
-      background-color: #f8f9fa;
+    body {
       margin: 0;
       padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      color: #202124;
-    }
-    
-    body.message-page {
-      font-family: 'Georgia', serif;
-      background: url('https://i.ibb.co/VYRzQXw7/flores-rosas.jpg') no-repeat center center fixed;
+      background-image: url('https://i.ibb.co/HDcQT6xf/Chat-GPT-Image-3-de-mai-de-2025-09-46-20.png');
       background-size: cover;
-      margin: 0;
-      padding: 0;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      color: #333;
+      text-align: center;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
     }
 
-    .login-box {
-      background-color: white;
-      width: 368px;
-      padding: 48px 40px 36px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    
-    .message-box {
-      background-color: rgba(255, 255, 255, 0.85);
-      padding: 30px;
-      border-radius: 15px;
-      max-width: 600px;
-      text-align: center;
-      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      margin: 20px;
+    .content {
+      max-width: 700px;
+      padding: 20px;
+      backdrop-filter: blur(2px);
     }
 
-    .logo {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    
-    .logo h1 {
-      color: #4285F4;
-      font-size: 24px;
-      font-weight: 500;
-    }
-    
-    .login-title {
-      font-size: 24px;
-      font-weight: 400;
+    h1 {
+      font-size: 2.5em;
       margin-bottom: 10px;
-    }
-    
-    .login-subtitle {
-      font-size: 16px;
-      color: #5f6368;
-      margin-bottom: 40px;
-    }
-    
-    .login-input {
-      width: 100%;
-      padding: 13px 15px;
-      margin-bottom: 20px;
-      border: 1px solid #dadce0;
-      border-radius: 4px;
-      font-size: 16px;
-      outline: none;
-    }
-    
-    .login-btn {
-      width: 100%;
-      background-color: #4285F4;
-      color: white;
-      border: none;
-      padding: 10px 24px;
-      border-radius: 4px;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      margin-top: 10px;
-      height: 36px;
-    }
-    
-    .login-btn:hover {
-      background-color: #3367d6;
+      color: #ffffff;
     }
 
-    .guest-mode, .create-account {
-      color: #5f6368;
-      font-size: 14px;
-      margin-top: 20px;
-    }
-    
-    .guest-mode a, .create-account a {
-      color: #4285F4;
-      text-decoration: none;
+    p {
+      font-size: 1.2em;
+      margin: 20px 0;
     }
 
-    #admin-panel {
-      background: rgba(255,240,245,0.9);
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 20px;
-    }
-    
-    #respostas {
-      white-space: pre-line;
+    .whatsapp-message {
+      background: #e1ffc7;
+      color: #000;
+      border-radius: 7.5px;
+      padding: 8px 12px;
+      margin: 20px auto;
+      max-width: 70%;
       text-align: left;
-      font-size: 14px;
-      color: #444;
-      background: #fff;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      max-height: 200px;
-      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
+      font-size: 14.2px;
+      line-height: 19px;
+      display: inline-block;
     }
 
-    .hidden {
-      display: none;
+    .whatsapp-message:before {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 7px;
+      width: 15px;
+      height: 20px;
+      background: #e1ffc7;
+      transform: skew(0, -40deg);
+      z-index: -1;
     }
 
-    .admin-btn {
-      background: linear-gradient(to right, #c2185b, #e91e63);
-      margin-top: 15px;
+    .whatsapp-time {
+      color: #667781;
+      font-size: 11px;
+      text-align: right;
+      margin-top: 4px;
     }
 
+    .spotify-container {
+      margin-top: 40px;
+      width: 100%;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .music-alternative {
+      margin-top: 20px;
+      color: #e1ffc7;
+      font-size: 0.9em;
+    }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
-<body class="login-page">
-  <div class="login-box" id="login-container">
-    <div class="logo">
-      <h1>Google</h1>
+<body>
+  <div class="content">
+    <h1>Feliz Aniversário, quase farmacêutica!</h1>
+    <p>Te desejo muitas felicidades e saúde (que você tá precisando 😂).<br>
+    Eu até te desejaria sucesso, mas você nem precisa disso: sei que vai ser uma excelente profissional independente da área que atue.</p>
+    <p>abraços, Uélizinha do grau, assinado outro quase farmacêutico</p>
+
+    <!-- Mensagem no estilo WhatsApp -->
+    <div class="whatsapp-message">
+      "Se vc precisar de algo pode chamar que o que tiver ao meu alcance eu vou fazer, o que não tiver... bom, aí a gente dá um jeitinho."
+      <div class="whatsapp-time">11:25</div>
     </div>
-    <h2 class="login-title">Sign in</h2>
-    <p class="login-subtitle">to continue to your special message</p>
-    
-    <input type="text" class="login-input" id="username" placeholder="Email or phone
-      
+
+    <!-- Player do Spotify - Só os Loucos Sabem -->
+    <div class="spotify-container">
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3nI0piSOxAik2RCpHGloB7?si=6f02f8ba636b4cd3" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+
+    <!-- Alternativa caso o player não funcione -->
+    <div class="music-alternative">
+      Se o player não funcionar, ouça: <a href="https://open.spotify.com/intl-pt/track/3nI0piSOxAik2RCpHGloB7?si=6f02f8ba636b4cd3" target="_blank" style="color:#25D366;">Só os Loucos Sabem - Charlie Brown Jr.</a>
+    </div>
+  </div>
+</body>
+</html>
